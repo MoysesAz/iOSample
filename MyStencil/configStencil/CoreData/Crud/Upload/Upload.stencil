@@ -1,0 +1,12 @@
+extension  {
+{% for type in types.based.NSManagedObject %}
+    func upload{{ type.name }}({% for var in type.variables %}{% if forloop.first %}_ {% endif %}{{ var.name }}: {{ var.typeName }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+        let {{type.name|lowercase}} = get{{ type.name }}ByID(_ id: id).first
+        {% for var in type.variables %}
+        {{type.name|lowercase}}?.{{var.name}} = {{var.name}}
+        {% endfor %}
+        save()
+    }
+{% endfor %}
+}
+

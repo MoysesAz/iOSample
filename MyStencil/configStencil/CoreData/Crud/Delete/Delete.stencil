@@ -1,0 +1,8 @@
+extension  {
+{% for type in types.based.NSManagedObject %}
+    func delete{{ type.name }}(_ {{ type.name|lowercase }}: {{ type.name }}) {
+        container.viewContext.delete({{ type.name|lowercase }})
+        save()
+    }
+{% endfor %}
+}

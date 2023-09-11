@@ -1,0 +1,30 @@
+configurations:
+    - sources:
+        - "path"/Presentation
+      templates:
+        - "path"/configStencil/Presentation/UIView.stencil
+      output: Responses/Presentation
+
+    - sources:
+        - "path"/Data
+      templates:
+        - "path"/configStencil/CoreData/Crud/Upload/Upload.stencil
+      output: "path"/Responses/CoreData/Crud/Upload
+
+    - sources:
+        - "path"/Data
+      templates:
+        - "path"/configStencil/CoreData/Crud/Read/Read.stencil
+      output: "path"/Responses/CoreData/Crud/Read
+
+    - sources:
+        - "path"/Data
+      templates:
+        - "path"/configStencil/CoreData/Crud/Delete/Delete.stencil
+      output: "path"/Responses/CoreData/Crud/Delete
+
+    - sources:
+        - "path"/Data
+      templates:
+        - "path"/configStencil/CoreData/Crud/Create/Create.stencil
+      output: "path"/Responses/CoreData/Crud/Create

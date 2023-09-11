@@ -1,0 +1,29 @@
+extension  {
+{% for type in types.based.NSManagedObject %}
+    func get{{ type.name }}ByID(_ id: UUID) -> [{{ type.name }}] {
+        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let featchRequest: NSFetchRequest<{{ type.name }}> = {{ type.name }}.featchRequest()
+        featchRequest.predicate = predicate
+        do {
+            let results = try container.viewContext.fetch(featchRequest)
+            return results
+        } catch {
+            fatalError("Error in use fetch {{ type.name }}ByID" \(error))
+        }
+    }
+{% endfor %}
+}
+
+extension  {
+{% for type in types.based.NSManagedObject %}
+    func get{{ type.name }}() -> [{{ type.name }}] {
+        let featchRequest: NSFetchRequest<{{ type.name }}> = {{ type.name }}.featchRequest()
+        do {
+            let results = try container.viewContext.fetch(featchRequest)
+            return results
+        } catch {
+            fatalError("Error in use fetch {{ type.name }}ByID" \(error))
+        }
+    }
+{% endfor %}
+}

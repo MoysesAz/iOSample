@@ -1,0 +1,11 @@
+extension  {
+{% for type in types.based.NSManagedObject %}
+    func create{{ type.name }}({% for var in type.variables %}{{ var.name }}: {{ var.typeName }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+        let new{{ type.name }} = {{type.name}}(context: container.viewContext)
+    {% for var in type.variables%}
+        new{{ type.name }}.{{ var.name }} = {{ var.name }}
+    {% endfor %}
+        save()
+{% endfor %}
+}
+
